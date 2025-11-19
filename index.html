@@ -8,7 +8,20 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap');
-
+body, html {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, #ffffff 0%, #e7e7ec 100%), 
+              url('https://Usuy-Leon.github.io/home.github.io/Imagenes/test_2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--fg);
+  font-family: var(--font-serif);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fullReset var(--cycle) linear infinite;
+}
 :root {
   --bg: #ffffff;
   --fg: #0b0b0b;

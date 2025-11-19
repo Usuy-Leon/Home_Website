@@ -26,7 +26,7 @@ body, html {
   --fg: #0b0b0b;
   --muted: #6b6b6b;
   --font-serif: 'Lora', serif;
-  --fade-duration: 1.7s;
+  --fade-duration: 2.7s;
   --cycle: 180s;
 }
 
@@ -64,13 +64,16 @@ body, html {
              inkDisappear 6.5s ease forwards var(--cycle);
 }
 .fade-last {
-  animation-delay: 9s, var(--cycle);
+  animation-delay: 6.5s, var(--cycle);
 }
 .ink-line:nth-child(1) { animation-delay: 0s, var(--cycle); }
-.ink-line:nth-child(2) { animation-delay: 3.4s, var(--cycle); }
-.ink-line:nth-child(3) { animation-delay: 4.4s, var(--cycle); }
-.ink-line:nth-child(4) { animation-delay: 6s, var(--cycle); }
+.ink-line:nth-child(2) { animation-delay: 2.4s, var(--cycle); }
+.ink-line:nth-child(3) { animation-delay: 3.4s, var(--cycle); }
+.ink-line:nth-child(4) { animation-delay: 5s, var(--cycle); }
 
+.ink-line.fade-last a {
+  font-size: 0.8rem; /* Smaller than the text lines */
+}
 @keyframes inkAppear {
   0% { opacity: 0; filter: blur(14px); color:#bfbfbf; transform: translateY(12px); }
   40% { opacity: 0.35; filter: blur(7px); color:#a5a5a5; }
@@ -103,21 +106,21 @@ body, html {
     <a href="https://usuy-leon.github.io/cv/" target="_blank"
        style="padding:0.25rem 0.7rem; border-radius:999px; border:1px solid rgba(0,0,0,0.12);
        background:rgba(255,255,255,0.7); backdrop-filter:blur(10px);
-       text-decoration:none; font-weight:400; color:var(--fg);">
+       text-decoration:none; font-weight:300; color:var(--fg);">
       CV
     </a>
 
     <a href="https://usuy-leon.github.io/Usuy-Leon/Leon_Usuy_CVf.pdf"
        style="padding:0.25rem 0.7rem; border-radius:999px; border:1px solid rgba(0,0,0,0.12);
        background:rgba(255,255,255,0.7); backdrop-filter:blur(10px);
-       text-decoration:none; font-weight:400; color:var(--fg);">
+       text-decoration:none; font-weight:300; color:var(--fg);">
       PDF
     </a>
 
     <a href="https://github.com/Usuy-Leon" 
        style="padding:0.25rem 0.7rem; border-radius:999px; border:1px solid rgba(0,0,0,0.12);
        background:rgba(255,255,255,0.7); backdrop-filter:blur(10px);
-       text-decoration:none; font-weight:400; color:var(--fg);">
+       text-decoration:none; font-weight:300; color:var(--fg);">
       GitHub
     </a>
   </div>

@@ -67,7 +67,7 @@ body, html {
 .ink-line.fade-last {
   animation: inkAppear var(--fade-duration) ease forwards,
              inkDisappear 6.5s ease forwards var(--cycle);
-  animation-delay: 6.5s; 
+  animation-delay: 6.5s, calc(6.5s + var(--fade-duration));
 }
 
 
@@ -111,7 +111,7 @@ body, html {
   </div>
 
   <div class="ink-line fade-last" style="margin-top:2rem; display:flex; gap:1rem; justify-content:center;">
-    <a href="https://usuy-leon.github.io/cv/" target="_blank"
+    <a href="https://usuy-leon.github.io/cv/"
        style="padding:0.25rem 0.7rem; border-radius:999px; border:1px solid rgba(0,0,0,0.12);
        background:rgba(255,255,255,0.7); backdrop-filter:blur(10px);
        text-decoration:none; font-weight:300; color:var(--fg);">
@@ -131,6 +131,7 @@ body, html {
        text-decoration:none; font-weight:300; color:var(--fg);">
       GitHub
     </a>
+    
   </div>
 </div>
 </body>

@@ -11,7 +11,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap');
 
-/* --- CSS Variables for Light Mode --- */
+/* --- variables for Light Mode --- */
 :root {
   --bg: #ffffff;
   --fg: #0b0b0b;
@@ -24,10 +24,10 @@
   --bg-image: url('https://Usuy-Leon.github.io/home.github.io/Imagenes/☀️_dayLight_edition.jpg');
   --btn-bg: rgba(255,255,255,0.7);
   --btn-border: rgba(0,0,0,0.12);
-  --text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 0 0 2px rgba(0, 0, 0, 0.15); /* Subtle white glow + light shadow */
+  --text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 0 0 2px rgba(0, 0, 0, 0.15); /* claridad al texto */
 }
 
-/* --- CSS Variables for Dark Mode (Applied via .dark-mode) --- */
+/* ---  Variables for Dark Mode (Applied via .dark-mode) --- */
 .dark-mode {
   --bg: #1e1e2f; 
   --fg: #e0e0e0; 
@@ -35,7 +35,7 @@
   --bg-image: url('https://Usuy-Leon.github.io/home.github.io/Imagenes/🌙_Dark_mode_edition (1).jpg'); 
   --btn-bg: rgba(50, 50, 70, 0.7);
   --btn-border: rgba(255,255,255,0.12);
-  --text-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 0 2px rgba(255, 255, 255, 0.1); /* Subtle dark shadow + light glow */
+  --text-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 0 2px rgba(255, 255, 255, 0.1); /* claridad al texto */
 }
 
 body, html {
@@ -67,13 +67,11 @@ body, html {
   filter: blur(8px);
   transform: translateY(10px);
   margin: 0.6rem 0;
-  
-  /* Readability Improvement: Increased minimum font size */
   font-size: clamp(1.1rem, 2.5vw, 1.65rem); 
   letter-spacing: 0.7px;
   font-weight: 500;
   
-  /* Readability Improvement: Added text shadow for better contrast */
+ 
   text-shadow: var(--text-shadow); 
   
   animation: inkAppear var(--fade-duration) ease forwards,
@@ -114,9 +112,6 @@ body, html {
 .ink-line:nth-child(3) { animation-delay: 3.4s, var(--cycle); }
 .ink-line:nth-child(4) { animation-delay: 4s, var(--cycle); }
 
-/* The 'fade-last' class already applies the 6.5s delay to the links div */
-/* The Dark Mode button will appear immediately after the links */
-
 
 #darkModeToggle {
   /* Style the button - removed the .dark-mode-line wrapper, applied styles here */
@@ -131,7 +126,7 @@ body, html {
   cursor: pointer;
   font-family: var(--font-serif);
   transition: background 0.3s, border-color 0.3s, color 0.3s;
-  text-shadow: none; /* Remove shadow from the button */
+  text-shadow: none; 
 }
 
 #darkModeToggle:hover {
@@ -139,7 +134,7 @@ body, html {
     color: var(--bg);
 }
 
-/* Your existing keyframes (No Change) */
+/* keyframes (No Change) */
 @keyframes inkAppear {
   0% { opacity: 0; filter: blur(14px); color:#bfbfbf; transform: translateY(12px); }
   40% { opacity: 0.35; filter: blur(7px); color:#a5a5a5; }
@@ -183,7 +178,7 @@ body, html {
   
   <div class="ink-line fade-last dark-mode-container">
     <button id="darkModeToggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i> Dark Mode
+        <i class="fas fa-moon"></i>
     </button>
   </div>
   

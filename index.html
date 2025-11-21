@@ -20,20 +20,22 @@
   --fade-duration: 2.3s;
   --cycle: 120s;
   
-  /* Backgrounds */
+  /* Backgrounds & Contrast */
   --bg-image: url('https://Usuy-Leon.github.io/home.github.io/Imagenes/☀️_dayLight_edition.jpg');
   --btn-bg: rgba(255,255,255,0.7);
   --btn-border: rgba(0,0,0,0.12);
+  --text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 0 0 2px rgba(0, 0, 0, 0.15); /* Subtle white glow + light shadow */
 }
 
 /* --- CSS Variables for Dark Mode (Applied via .dark-mode) --- */
 .dark-mode {
-  --bg: #1e1e2f; /* Dark background color */
-  --fg: #e0e0e0; /* Light text color */
+  --bg: #1e1e2f; 
+  --fg: #e0e0e0; 
   --muted: #a0a0a0;
-  --bg-image: url('https://Usuy-Leon.github.io/home.github.io/Imagenes/🌙_Dark_mode_edition (1).jpg'); /* Replace with your dark image URL */
+  --bg-image: url('https://Usuy-Leon.github.io/home.github.io/Imagenes/🌑_nightDark_edition.jpg'); 
   --btn-bg: rgba(50, 50, 70, 0.7);
   --btn-border: rgba(255,255,255,0.12);
+  --text-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 0 2px rgba(255, 255, 255, 0.1); /* Subtle dark shadow + light glow */
 }
 
 body, html {
@@ -41,7 +43,6 @@ body, html {
   height: 100%;
   width: 100%;
   
-  /* Use CSS variables for easy toggling */
   background: var(--bg-image) no-repeat center center fixed;
   background-size: cover;
   color: var(--fg);
@@ -52,7 +53,6 @@ body, html {
   justify-content: center;
   animation: fullReset var(--cycle) linear infinite;
   
-  /* Added transition for smooth color/background change */
   transition: background-color 0.5s, color 0.5s;
 }
 
@@ -62,16 +62,20 @@ body, html {
   width: min(720px, 94vw);
 }
 
-/* Your existing animation styles... */
-
 .ink-line {
   opacity: 0;
   filter: blur(8px);
   transform: translateY(10px);
   margin: 0.6rem 0;
-  font-size: clamp(1rem, 2.3vw, 1.55rem);
+  
+  /* Readability Improvement: Increased minimum font size */
+  font-size: clamp(1.1rem, 2.5vw, 1.65rem); 
   letter-spacing: 0.7px;
   font-weight: 500;
+  
+  /* Readability Improvement: Added text shadow for better contrast */
+  text-shadow: var(--text-shadow); 
+  
   animation: inkAppear var(--fade-duration) ease forwards,
              inkDisappear 6.5s ease forwards var(--cycle);
 }
@@ -82,32 +86,40 @@ body, html {
   animation-delay: 6.5s, calc(120s + var(--fade-duration));
 }
 
-/* Apply button styles using variables */
+/* Button animation and positioning fix */
+.ink-line.fade-last.dark-mode-container {
+    /* Inherit the animation properties of the last line */
+    animation-delay: 6.5s, calc(120s + var(--fade-duration)); 
+    margin-top: 1.5rem;
+}
+
 .ink-line.fade-last a {
   font-size: 1.1rem; 
   animation: none; 
   padding:0.25rem 0.7rem; 
   border-radius:999px; 
-  border:1px solid var(--btn-border); /* Updated */
-  background:var(--btn-bg); /* Updated */
+  border:1px solid var(--btn-border);
+  background:var(--btn-bg); 
   backdrop-filter:blur(10px);
   text-decoration:none; 
   font-weight:300; 
-  color:var(--fg); /* Updated */
-  transition: background 0.3s, border-color 0.3s, color 0.3s; /* Smooth button transition */
+  color:var(--fg);
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+  text-shadow: none; /* Remove shadow from the buttons */
 }
 
-/* Ensure the dark mode button is on a new line and styled */
-.dark-mode-line {
-  display: block; /* Ensures it takes a new line */
-  margin-top: 1.5rem;
-  opacity: 0; /* Inherit animation effect */
-  animation: inkAppear var(--fade-duration) ease forwards;
-  animation-delay: 8.5s; /* Appear after your last line */
-}
+/* Existing Staggered Delays (No Change) */
+.ink-line:nth-child(1) { animation-delay: 0s, var(--cycle); }
+.ink-line:nth-child(2) { animation-delay: 1.4s, var(--cycle); }
+.ink-line:nth-child(3) { animation-delay: 3.4s, var(--cycle); }
+.ink-line:nth-child(4) { animation-delay: 4s, var(--cycle); }
+
+/* The 'fade-last' class already applies the 6.5s delay to the links div */
+/* The Dark Mode button will appear immediately after the links */
+
 
 #darkModeToggle {
-  /* Style the button */
+  /* Style the button - removed the .dark-mode-line wrapper, applied styles here */
   padding:0.25rem 0.7rem; 
   border-radius:999px; 
   border:1px solid var(--btn-border);
@@ -119,14 +131,15 @@ body, html {
   cursor: pointer;
   font-family: var(--font-serif);
   transition: background 0.3s, border-color 0.3s, color 0.3s;
+  text-shadow: none; /* Remove shadow from the button */
 }
 
 #darkModeToggle:hover {
-    background: var(--fg); /* Invert colors on hover */
+    background: var(--fg);
     color: var(--bg);
 }
 
-/* Your existing keyframes */
+/* Your existing keyframes (No Change) */
 @keyframes inkAppear {
   0% { opacity: 0; filter: blur(14px); color:#bfbfbf; transform: translateY(12px); }
   40% { opacity: 0.35; filter: blur(7px); color:#a5a5a5; }
@@ -168,7 +181,7 @@ body, html {
       </a>
   </div>
   
-  <div class="dark-mode-line">
+  <div class="ink-line fade-last dark-mode-container">
     <button id="darkModeToggle" aria-label="Toggle dark mode">
         <i class="fas fa-moon"></i> Dark Mode
     </button>
@@ -202,10 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (savedTheme === 'light') {
         applyTheme(false);
     } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        // Optional: Check system preference if no localStorage value is found
         applyTheme(true); 
     } else {
-        // Default to light mode (already set by CSS)
         applyTheme(false);
     }
 
@@ -217,7 +228,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
-</body>
-</html>
 </body>
 </html>
